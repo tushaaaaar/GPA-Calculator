@@ -25,7 +25,7 @@ const SubjectCard = ({ index, updateGrade }) => {
               type="number"
               className="form-control"
               id="total"
-              placeholder="Number of Credits"
+              placeholder={`Credits in Subject ${index + 1}`}
               onChange={handleCreditsChange}
             />
           </div>
