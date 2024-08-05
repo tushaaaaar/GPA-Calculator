@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
+import Home from "./components/Home";
+import SgpaCalculator from "./components/SgpaCalculator";
+import CgpaCalculator from "./components/CgpaCalculator";
 
 function App() {
+  const location = useLocation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      {location.pathname === "/" && (
+        <>
+          <Home name={"GPA Calculator"} home={"Home"} />
+          <div className="d-flex justify-content-center mt-5">
+            <div className="d-flex flex-column">
+            <Link to="/sgpa-calculator">
+              <button className="btn btn-primary m-2">SGPA Calculator</button>
+            </Link>
+            <Link to="/cgpa-calculator">
+              <button className="btn btn-primary m-2">CGPA Calculator</button>
+            </Link>
+            </div>
+          </div>
+        </>
+      )}
+      <Routes>
+        <Route path="/" element={<div />} />
+        <Route path="/sgpa-calculator" element={<SgpaCalculator />} />
+        <Route path="/cgpa-calculator" element={<CgpaCalculator />} />
+      </Routes>
     </div>
   );
 }
 
-export default App;
+function AppWrapper() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}
+
+export default AppWrapper;
