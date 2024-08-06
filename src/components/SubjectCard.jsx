@@ -29,7 +29,7 @@ const SubjectCard = ({ index, updateGrade }) => {
               onChange={handleCreditsChange}
             />
           </div>
-          <div class="dropdown col-2">
+          <div className="dropdown col-2">
             <button
               className="btn btn-secondary dropdown-toggle"
               type="button"
@@ -38,8 +38,8 @@ const SubjectCard = ({ index, updateGrade }) => {
               {selectedGrade}
             </button>
             <ul className="dropdown-menu">
-              {["O", "A+", "A", "B+", "B", "C+", "C"].map((grade) => (
-                <li>
+              {["O", "A+", "A", "B+", "B", "C+", "C"].map((grade, gradeIndex) => (
+                <li key={gradeIndex}>
                   <a className="dropdown-item" onClick={() => handleGradeChange(grade)}>
                     {grade}
                   </a>
